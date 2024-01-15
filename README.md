@@ -1,66 +1,32 @@
-## Foundry
+# EthVault
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Notes
 
-Foundry consists of:
+### CLI
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+source .env
 
-## Documentation
+cast call $USDC \
+ "balanceOf(address)(uint256)" \
+ $ME
 
-https://book.getfoundry.sh/
+cast call $USDC \
+ "balanceOf(address)(uint256)" \
+ $LUCKY_USER
 
-## Usage
+cast rpc anvil_impersonateAccount $LUCKY_USER
 
-### Build
+cast send $USDC \
+--unlocked \
+--from $LUCKY_USER \
+ "transfer(address,uint256)(bool)" \
+ $ME \
+ 1686045000
 
-```shell
-$ forge build
-```
+cast call $USDC \
+ "balanceOf(address)(uint256)" \
+ $ME
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+cast call $USDC \
+ "balanceOf(address)(uint256)" \
+ $LUCKY_USER
