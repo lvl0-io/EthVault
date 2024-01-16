@@ -63,7 +63,7 @@ contract EthVault {
             amountIn
         );
 
-        TransferHelper.safeApprove(USDC, address(swapRouter), amountIn);
+        TransferHelper.safeApprove(WETH, address(swapRouter), amountIn);
 
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
             .ExactInputSingleParams({
