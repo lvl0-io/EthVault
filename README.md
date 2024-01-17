@@ -1,5 +1,13 @@
 # EthVault
 
+## Todo
+
+- [x] Build smart contract
+- [x] Swap USDC
+- [x] Swap WETH
+- [x] NodeJS App
+- [ ] Token reserve swaps
+
 ## Notes
 
 Contract Address: 0x82C6D3ed4cD33d8EC1E51d0B5Cc1d822Eaa0c3dC
