@@ -26,9 +26,8 @@ contract EthVault {
         owner = msg.sender;
     }
 
-    function swapUSDC(
-        uint256 amountIn
-    ) external onlyOwner returns (uint256 amountOut) {
+    function swapWETH() external returns (uint256 amountOut) {
+        uint256 amountIn = (IERC20(USDC).balanceOf(msg.sender) * 33) / 100;
         TransferHelper.safeTransferFrom(
             USDC,
             msg.sender,
@@ -53,9 +52,8 @@ contract EthVault {
         amountOut = swapRouter.exactInputSingle(params);
     }
 
-    function swapWETH(
-        uint256 amountIn
-    ) external onlyOwner returns (uint256 amountOut) {
+    function swapUSDC() external returns (uint256 amountOut) {
+        uint256 amountIn = (IERC20(WETH).balanceOf(msg.sender) * 33) / 100;
         TransferHelper.safeTransferFrom(
             WETH,
             msg.sender,

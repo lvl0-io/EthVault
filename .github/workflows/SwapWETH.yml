@@ -1,0 +1,25 @@
+name: Swap USDC for WETH
+
+on:
+  schedule:
+    - cron: "0 2 * * 5"
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "21.x" # Ensure this version is compatible with your project
+
+      - name: Install Dependencies
+        run: |
+          npm install web3
+          npm install dotenv
+
+      - name: Run the main index function
+        run: npm run swapUSDC
