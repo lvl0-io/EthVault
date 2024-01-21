@@ -1,10 +1,9 @@
 {
   "dependencies": {
     "dotenv": "^16.3.1",
-    "ethers": "^6.10.0",
     "web3": "^4.3.0"
   },
   "scripts": {
-    "swapWETH": "node src/SwapWETH.js"
+    "swapUSDC": "node src/SwapUSDC"
   }
 }
