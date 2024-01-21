@@ -6,13 +6,13 @@
 - [x] Swap USDC
 - [x] Swap WETH
 - [x] NodeJS App
-- [ ] Token reserve swaps
+- [X] Token reserve swaps
 
 ## Notes
 
-Contract Address: 0x82C6D3ed4cD33d8EC1E51d0B5Cc1d822Eaa0c3dC
+Contract Address: https://arbiscan.io/address/0x93fc321246b81a196ea3bc6be272cdfc46af6fb7
 
-Owner: 0xa0Ee7A142d267C1f36714E4a8F75612F20a79720
+Owner: 0x9Ab84a08b16C1D5AeBE4756679C5eAAe0563F144
 
 ### CLI
 
