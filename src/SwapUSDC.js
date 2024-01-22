@@ -1,23 +1,27 @@
-const { Web3 } = require("web3");
-require("dotenv").config();
 
-const web3 = new Web3(new Web3.providers.HttpProvider(process.env.RPC_URL));
-const { abi } = require("./EthVault.json");
+const ethers = require("ethers")
+require('dotenv').config();
+const {abi} = require('./EthVault.json')
 
-// Replace with your token contract's address
-const tokenAddress = process.env.CONTRACT_ADDRESS;
+async function main(){
 
-async function swapUSDC() {
-  const signer = web3.eth.accounts.privateKeyToAccount(process.env.PRIVATE_KEY);
+    const  contractAddress =  process.env.CONTRACT_ADDRESS 
+    const pKey = process.env.PRIVATE_KEY
+    const provider = new ethers.JsonRpcProvider(process.env.RPC_URL)
+    const signer = new ethers.Wallet(pKey, provider);
+    const contract = new  ethers.Contract(contractAddress,abi,signer) // Use signer instead of provider
 
-  const contract = new web3.eth.Contract(abi, tokenAddress);
-  const swap = await contract.methods
-    .swapUSDC()
-    // .getTokenBalance(process.env.USDC)
-    .send({ from: signer.address, gas: 3000000 });
-  // .call({ from: signer.address, gas: 3000000 });
+    const encodeFuncData = contract.interface.encodeFunctionData("swapUSDC") // func name and args 
 
-  return swap;
+    const transaction = {
+        to: contractAddress, // Send to contract address
+        data: encodeFuncData,
+    };
+
+    const gasEstimate = await signer.sendTransaction(transaction);
+    transaction.gasLimit = gasEstimate;
+
+    
 }
 
-swapUSDC().then((swap) => console.log(swap));
+main().then((gasEstimate) => console.log('Swapped USDC'));
