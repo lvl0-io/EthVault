@@ -18,7 +18,6 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install web3
           npm install ethers
           npm install dotenv
 
