@@ -24,3 +24,7 @@ jobs:
 
       - name: Run the main index function
         run: npm run swapUSDC
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          RPC_URL: ${{ secrets.RPC_URL }}
+          CONTRACT_ADDRESS: ${{ secrets.CONTRACT_ADDRESS }}

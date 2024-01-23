@@ -12,10 +12,8 @@ async function getTokenBalance() {
 
   const contract = new web3.eth.Contract(abi, tokenAddress);
   const swap = await contract.methods
-    // .swapUSDC()
     .getTokenBalance(process.env.USDC)
-    // .send({ from: signer.address, gas: 3000000 });
-  .call({ from: signer.address, gas: 3000000 });
+    .call({ from: signer.address, gas: 3000000 });
 
   return swap;
 }

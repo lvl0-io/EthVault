@@ -18,10 +18,8 @@ async function main(){
         data: encodeFuncData,
     };
 
-    const gasEstimate = await signer.sendTransaction(transaction);
-    transaction.gasLimit = gasEstimate;
-
-    
+    const trx = await signer.sendTransaction(transaction);
+    return trx;
 }
 
-main().then((gasEstimate) => console.log('Swapped USDC'));
+main().then((trx) => console.log(trx));
