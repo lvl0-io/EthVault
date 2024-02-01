@@ -2,7 +2,7 @@ name: Swap USDC for WETH
 
 on:
   schedule:
-    - cron: "0 2 * * 5"
+    - cron: "0 9 * * 5"
 
 jobs:
   hello:
